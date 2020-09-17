@@ -4,10 +4,10 @@
 ## Imports needed are reportlab, emails, os, datetime, sys, reports,  mimetypes, emails, PIL.
 ## Use pip 20.2.2 to install imports 
 
-## Installing python
+### Installing python
 https://www.python.org/ 
 
-## Installing pip
+### Installing pip
 https://www.educative.io/edpresso/installing-pip3-in-ubuntu
 
 
