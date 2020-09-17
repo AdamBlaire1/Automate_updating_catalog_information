@@ -5,7 +5,7 @@ import os
 # The Python Requests module
 # Post all .jpegs in a file
 url = "http://localhost/upload/"
-path =(r"/home/student-03-157caa2f9944/supplier-data/images")
+path =(r"/home/student-03-157caa2f9944/supplier-data/images/")
 for file in os.listdir(path):
  #print(file)
  if file.endswith(".jpeg"):

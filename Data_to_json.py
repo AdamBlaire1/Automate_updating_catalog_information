@@ -8,39 +8,29 @@ for file in os.listdir(path):
     #print(file)
     if file.endswith(".txt"):
         filename = file
+        #Gives me the file name.
         with open(path+"/"+file) as file:
             dict_keys = ["name", "weight", "description", "image_name"]
             new_data = {}
             name = file.readline()
             new_data[dict_keys[0]] = name.strip()
+            #Adds all the names into a new dictionary
             #print(dict_keys)
             weight = file.readline()
             new_data[dict_keys[1]] = int(weight.split(" ")[0])
+            #Adds all the weights into a dictionary and turns it into a number and get rid of lbs.
             #print(weight)
             description = file.read()
             new_data[dict_keys[2]] = description
+            #Adds all descriptions into a dictionary.
             #print(description)
             new_data[dict_keys[3]] = filename.split(".txt")[0]+'.jpeg'
+            #Adds Image_name to all data and removes .txt and adds .jpeg to the filename and adds it to Image_name.
             #print(new_data)
             r = requests.post(url, data=new_data)
+            #Post the new data to the url.
             r.status_code
+            #Gives me feedback code telling if the data was received or not, should say 200 not 500.
         file.close()
-
-#!/usr/bin/env python3
-
-from reportlab.platypus import SimpleDocTemplate
-from reportlab.platypus import Paragraph, Spacer, Image
-from reportlab.lib.styles import getSampleStyleSheet
-from reportlab.lib import colors
-
-def generate_report(filename, title, additional_info):
-  styles = getSampleStyleSheet()
-  report = SimpleDocTemplate(filename)
-  report_title = Paragraph(title, styles["h1"])
-  report_info = Paragraph(additional_info, styles["Normal"])
-  empty_line = Spacer(1,20)
-  report.build([report_title, empty_line, report_info])
-
-
 
 

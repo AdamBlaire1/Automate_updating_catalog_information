@@ -8,20 +8,21 @@ def generate_email(sender, recipient, subject, body, attachment_path):
     message = email.message.EmailMessage()
     message["From"] = sender
     message["To"] = recipient
-    message["Subjest"] = subject
+    message["Subject"] = subject
     message.set_content(body)
 
     # Process the attachment and add it to email
-    attachments_filename = os.path.basename(attachment_path)
-    mime_type, _ = mimetypes.guess_type(attachment_path)
-    mime_type, mime_subtype = mime_type.split('/', 1)
+    if not attachment_path == "":
+     attachments_filename = os.path.basename(attachment_path)
+     mime_type, _ = mimetypes.guess_type(attachment_path)
+     mime_type, mime_subtype = mime_type.split('/', 1)
 
-    with open(attachment_path, "rb") as ap:
+     with open(attachment_path, "rb") as ap:
         message.add_attachment(ap.read(),
         maintype=mime_type,
         subtype=mime_subtype,
         filename=attachments_filename)
-    return message
+     return message
 
 def send(message):
     #Sends the message to the configured SMTP server.
